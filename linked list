@@ -1,0 +1,62 @@
+ #include <stdio.h>
+#include<stdlib.h>
+void insertAtBeigning (float val);
+void insertAtend (float val);
+struct node{
+    float data;
+    struct node *link ;
+};
+
+
+struct node *head=NULL;
+
+void print(){
+    struct node *temp;
+    temp= head;
+    while(temp!=NULL){
+        printf("%.1f\n",temp->data);
+        temp=temp->link;
+    }
+     printf("\n\n printing :\n");
+     
+}
+
+
+void insertAtBeigning (float val){
+    struct node *newnode = malloc(sizeof(struct node));
+    newnode -> data = val;
+    newnode ->link =head;
+    head = newnode;
+     while(newnode!=NULL){
+        printf("%.1f\n",newnode->data);
+        newnode=newnode->link;
+    }
+    
+}
+
+void insertAtend (float val){
+    struct node *new = malloc(sizeof(struct node));
+    new -> data = val;
+    new ->link =head;
+    head = new;
+     while(new->link!=NULL){
+        printf("%.1f\n",new->data);
+        new=new->link;
+     break;
+    }
+    
+}
+
+
+int main(){
+   
+    head = (struct node*)malloc(sizeof(struct node));
+    head->data=1.3;
+    head->link=(struct node*)malloc(sizeof(struct node));
+    head->link->data=2.3;
+    head->link->link=NULL;
+    print();
+    insertAtBeigning (5.7);
+    insertAtend (8.0);
+     return 0;
+}
